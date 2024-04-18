@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basil Pesto Recipe</title>
+    <link rel="stylesheet" href="bakingStyles.css">
+    <script>
+        var currentLoaves = 1;
+        var currentSize = "Large";
+
+        var sizeFactors = {
+            "Large": 1,
+            "Medium": 0.9,
+            "Small": 0.8
+        };
+
+        var originalAmounts = []; // Array to store original amounts
+        var originalTexts = []; // Array to store original texts
+        
+        function scaleRecipe(factor) {
+            currentLoaves = factor;
+            updateRecipe();
+        }
+
+        function setSize(size) {
+            currentSize = size;
+            updateRecipe();
+        }
+
+        function updateRecipe() {
+            var scaleFactor = sizeFactors[currentSize];
+            var ingredients = document.querySelectorAll(".ingredient");
+            
+            // If original amounts and texts are not stored, store them
+            if (originalAmounts.length === 0 && originalTexts.length === 0) {
+                ingredients.forEach(function(ingredient) {
+                    originalAmounts.push(parseFloat(ingredient.dataset.originalAmount));
+                    originalTexts.push(ingredient.textContent);
+                });
+            }
+            
+            ingredients.forEach(function(ingredient, index) {
+                var scaledAmount = originalAmounts[index] * currentLoaves * scaleFactor;
+                var originalTextParts = originalTexts[index].split(" "); // Split text into quantity and unit
+                ingredient.textContent = Math.round(scaledAmount) + " " + originalTextParts.slice(1).join(" "); // Update only quantity
+            });
+
+            document.getElementById("Loaves").textContent = "Loaves: " + currentLoaves;
+            document.getElementById("Size").textContent = "Size: " + currentSize;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html" style="cursor:default; text-decoration: none; color: inherit;">Jade Mawn</a> Baking</h1>
+            <nav>
+                <ul>
+                    <li><a href="bakingIndex.html" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn" onmouseover="toggleDropdown()">Recipes</a>
+                        <div class="dropdown-content" id="recipesDropdown">
+                            <a href="Sourdough.html">Basic Sourdough</a>
+                            <a href="SourdoughCalculator.html">Sourdough Calculator</a> <!-- Link to the new recipe -->
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Sourdough</h2>
+        <p>
+            Sourdough is a
+        </p>
+        <h3>Ingredients:</h3>
+        <div id="Loaves">Loaves: 1</div>
+        <div id="Size">Size: Large</div>
+        <div>
+            <button onclick="scaleRecipe(1)">1</button>
+            <button onclick="scaleRecipe(2)">2</button>
+            <button onclick="scaleRecipe(3)">3</button>
+            <button onclick="scaleRecipe(4)">4</button>
+        </div>
+        <div>
+            <button onclick="setSize('Small')">Small</button>
+            <button onclick="setSize('Medium')">Medium</button>
+            <button onclick="setSize('Large')">Large</button>
+        </div>
+        <ul>
+            <li class="ingredient" data-original-amount="300">300 grams of bread flour</li>
+            <li class="ingredient" data-original-amount="200">200 grams of whole wheat flour</li>
+            <li class="ingredient" data-original-amount="400">400 grams of water</li>
+            <li class="ingredient" data-original-amount="10">10 grams of salt</li>
+            <li class="ingredient" data-original-amount="100">100 grams of starter</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Combine the basil, garlic, and nuts in a food processor and pulse until coarsely chopped.</li>
+            <li>Add the cheese and pulse again.</li>
+            <li>While the food processor is running, slowly add the olive oil until the mixture is smooth.</li>
+            <li>Season with salt and pepper to taste.</li>
+            <li>Serve over pasta, spread on sandwiches, or use as a dip.</li>
+        </ol>
+    </div>
+</body>
+</html>
