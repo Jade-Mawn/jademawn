@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: verdana;
     margin: 0;
     padding: 0;
 }
@@ -10,8 +10,8 @@ body {
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: #b4dad3;
+    color: #4e625f;
     padding: 20px 0;
 }
 
