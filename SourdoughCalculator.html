@@ -5,9 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basil Pesto Recipe</title>
     <link rel="stylesheet" href="bakingStyles.css">
+    <style>
+        .slider-container {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .slider-label {
+            margin-right: 10px;
+        }
+
+        .slider {
+            width: 200px;
+            margin-right: 10px;
+        }
+    </style>
     <script>
         var currentLoaves = 1;
         var currentSize = "Large";
+        var flourRatio = 0.5; // Initial ratio of bread flour to whole wheat flour
 
         var sizeFactors = {
             "Large": 1,
@@ -41,13 +58,30 @@
             }
             
             ingredients.forEach(function(ingredient, index) {
-                var scaledAmount = originalAmounts[index] * currentLoaves * scaleFactor;
-                var originalTextParts = originalTexts[index].split(" "); // Split text into quantity and unit
-                ingredient.textContent = Math.round(scaledAmount) + " " + originalTextParts.slice(1).join(" "); // Update only quantity
+                if (index === 0) {
+                    // Calculate amounts for bread flour and whole wheat flour based on the ratio
+                    var breadFlourAmount = originalAmounts[index] * currentLoaves * scaleFactor * flourRatio;
+                    var wholeWheatFlourAmount = originalAmounts[index] * currentLoaves * scaleFactor * (1 - flourRatio);
+                    // Update text content for bread flour
+                    ingredient.textContent = Math.round(breadFlourAmount) + " grams of bread flour";
+                    // Create a new list item for whole wheat flour
+                    var newIngredient = document.createElement("li");
+                    newIngredient.className = "ingredient";
+                    newIngredient.textContent = Math.round(wholeWheatFlourAmount) + " grams of whole wheat flour";
+                    ingredient.parentNode.insertBefore(newIngredient, ingredient.nextSibling);
+                } else {
+                    // Remove additional list items for whole wheat flour
+                    ingredient.parentNode.removeChild(ingredient);
+                }
             });
 
             document.getElementById("Loaves").textContent = "Loaves: " + currentLoaves;
             document.getElementById("Size").textContent = "Size: " + currentSize;
+        }
+
+        function updateFlourRatio(value) {
+            flourRatio = value / 100; // Convert slider value to a ratio between 0 and 1
+            updateRecipe();
         }
     </script>
 </head>
@@ -90,20 +124,16 @@
             <button onclick="setSize('Large')">Large</button>
         </div>
         <ul>
-            <li class="ingredient" data-original-amount="300">300 grams of bread flour</li>
-            <li class="ingredient" data-original-amount="200">200 grams of whole wheat flour</li>
+            <li class="ingredient" data-original-amount="500">500 grams of bread flour</li>
+        </ul>
+        <div class="slider-container">
+            <span class="slider-label">Bread Flour</span>
+            <input type="range" min="0" max="100" value="50" class="slider" id="flourRatioSlider" oninput="updateFlourRatio(this.value)">
+            <span class="slider-label">Whole Wheat Flour</span>
             <li class="ingredient" data-original-amount="400">400 grams of water</li>
             <li class="ingredient" data-original-amount="10">10 grams of salt</li>
             <li class="ingredient" data-original-amount="100">100 grams of starter</li>
-        </ul>
-        <h3>Instructions:</h3>
-        <ol>
-            <li>Combine the basil, garlic, and nuts in a food processor and pulse until coarsely chopped.</li>
-            <li>Add the cheese and pulse again.</li>
-            <li>While the food processor is running, slowly add the olive oil until the mixture is smooth.</li>
-            <li>Season with salt and pepper to taste.</li>
-            <li>Serve over pasta, spread on sandwiches, or use as a dip.</li>
-        </ol>
+        </div>
     </div>
 </body>
 </html>
