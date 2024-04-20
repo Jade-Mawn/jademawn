@@ -8,6 +8,7 @@ body {
 .container {
     width: 80%;
     margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 .first {
@@ -70,6 +71,14 @@ header h1 {
     padding: 10px 0;
 }
 
+
+.first p {
+    color: #1f2020;
+    padding: 20px 0;
+    margin-left: auto;
+    width: 100%;
+}
+
 .second h1 {
     color: #4e625f;
     margin-left: 20px;
@@ -80,6 +89,13 @@ header h1 {
     color: #4e625f;
     margin-left: 20px;
     padding: 10px 0;
+}
+
+
+.second p {
+    color: #1f2020;
+    margin-left: auto;
+    padding: 20px 0;
 }
 
 .third h1 {
@@ -96,11 +112,14 @@ header h1 {
 
 .third p {
     color: #d1e2df;
-    margin-left: 40px;
+    margin-left: auto;
     padding: 20px 0;
 }
 
-
+.third li {
+    color: #d1e2df;
+    margin-left: 50px;
+}
 
 
 nav ul {
