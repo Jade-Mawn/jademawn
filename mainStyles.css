@@ -10,23 +10,27 @@ body {
     line-height: 1.7; 
 }
 
+#glow-circle {
+    position: absolute;
+    border-radius: 50%;
+    width: 100px; /* Adjust the size of the circle */
+    height: 100px; /* Adjust the size of the circle */
+    background: radial-gradient(circle, #89cbc1, #64bfb11f, #43ae9e00, #43ae9e00); /* Adjust the color stops for a softer gradient */
+    pointer-events: none; /* Make the circle not affect mouse events */
+    display: none; /* Hide the circle initially */
+}
 
+/* 
 .glow {
     font-size: 80px;
-    color: #fff;
-    text-align: center;
-    animation: glow 1s ease-in-out infinite alternate;
-  }
-  
-@-webkit-keyframes glow {
-from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 50px #ffffff, 0 0 60px #ffffff, 0 0 70px #ffffff;
+    text-decoration: none;
+    color: inherit;
+    transition: text-shadow 0.3s ease;
 }
 
-to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #43ae9e, 0 0 40px #43ae9e, 0 0 50px #43ae9e, 0 0 60px #43ae9e, 0 0 70px #43ae9e, 0 0 80px #43ae9e;
-}
-}
+.glow:hover {
+    text-shadow: 0 0 20px #43ae9e, 0 0 30px #43ae9e, 0 0 40px #43ae9e, 0 0 50px #43ae9e, 0 0 60px #43ae9e, 0 0 70px #43ae9e, 0 0 80px #43ae9e;
+} */
 
 
 
@@ -44,6 +48,7 @@ header {
 }
 
 header h1 {
+    font-size: 80px;
     margin: 0;
     display: inline;
 }
