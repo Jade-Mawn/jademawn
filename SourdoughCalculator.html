@@ -8,6 +8,7 @@
     <style>
         .slider-container {
             margin-top: 20px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
         }
@@ -25,15 +26,17 @@
         var currentLoaves = 1;
         var currentSize = "Large";
         var flourRatio = 0.5; // Initial ratio of bread flour to whole wheat flour
+        var hydration = .70; // Array to store original amounts
 
+        
         var sizeFactors = {
             "Large": 1,
             "Medium": 0.9,
             "Small": 0.8
         };
 
-        var originalAmounts = []; // Array to store original amounts
-        var originalTexts = []; // Array to store original texts
+        var originalAmounts = [500,500]; // Array to store original amounts
+        var texts = [" grams of bread flour", " grams of whole wheat flour"]; // Array to store original texts
         
         function scaleRecipe(factor) {
             currentLoaves = factor;
@@ -48,14 +51,6 @@
         function updateRecipe() {
             var scaleFactor = sizeFactors[currentSize];
             var ingredients = document.querySelectorAll(".ingredient");
-            
-            // If original amounts and texts are not stored, store them
-            if (originalAmounts.length === 0 && originalTexts.length === 0) {
-                ingredients.forEach(function(ingredient) {
-                    originalAmounts.push(parseFloat(ingredient.dataset.originalAmount));
-                    originalTexts.push(ingredient.textContent);
-                });
-            }
             
             ingredients.forEach(function(ingredient, index) {
                 if (index === 0) {
@@ -75,6 +70,8 @@
                 }
             });
 
+            ingredients
+
             document.getElementById("Loaves").textContent = "Loaves: " + currentLoaves;
             document.getElementById("Size").textContent = "Size: " + currentSize;
         }
@@ -93,7 +90,7 @@
                 <ul>
                     <li><a href="bakingIndex.html" class="active">Home</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropbtn" onmouseover="toggleDropdown()">Recipes</a>
+                        <a href="#" class="dropbtn"  onmouseleave="toggleDropdown()" onmouseover="toggleDropdown()">Recipes</a>
                         <div class="dropdown-content" id="recipesDropdown">
                             <a href="Sourdough.html">Basic Sourdough</a>
                             <a href="SourdoughCalculator.html">Sourdough Calculator</a> <!-- Link to the new recipe -->
@@ -123,17 +120,15 @@
             <button onclick="setSize('Medium')">Medium</button>
             <button onclick="setSize('Large')">Large</button>
         </div>
-        <ul>
-            <li class="ingredient" data-original-amount="500">500 grams of bread flour</li>
-        </ul>
         <div class="slider-container">
             <span class="slider-label">Bread Flour</span>
-            <input type="range" min="0" max="100" value="50" class="slider" id="flourRatioSlider" oninput="updateFlourRatio(this.value)">
+            <input type="range" min="0" max="100" value="0" step="10" class="slider" id="flourRatioSlider" oninput="updateFlourRatio(this.value)">
             <span class="slider-label">Whole Wheat Flour</span>
-            <li class="ingredient" data-original-amount="400">400 grams of water</li>
-            <li class="ingredient" data-original-amount="10">10 grams of salt</li>
-            <li class="ingredient" data-original-amount="100">100 grams of starter</li>
         </div>
+        <div>
+            <li class="ingredient"></li>
+        </div>
+        <script>updateRecipe()</script>
     </div>
 </body>
 </html>

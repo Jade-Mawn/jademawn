@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Home Screen</title>
+    <title>Jade Mawn Home</title>
     <link rel="stylesheet" href="mainStyles.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Jade Mawn</h1>
+            <h1><a href="index.html" style="cursor:default; text-decoration: none; color: inherit;">Jade Mawn</a></h1>
             <nav>
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="#" class="active">Projects</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn" onmouseleave="toggleDropdown()" onmouseover="toggleDropdown()">Projects</a>
+                        <div class="dropdown-content" id="recipesDropdown">
+                            <a href="">Coming</a>
+                            <a href="">Soon</a> 
+                        </div>
+                    </li>
                     <li><a href="bakingIndex.html" class="active">Baking</a></li>
                 </ul>
             </nav>
@@ -24,9 +30,24 @@
         <h2>Introduction</h2>
         <p>
             My name is Jade Mawn. I am a sophomore at the University of Richmond studying Mathematics 
-            and Computer Science. This is my first website which is still in early stages of development. 
+            and Computer Science. I am a French Minor and recently starting studying Spanish as well.
+            Beyond classes I have been a barista for three years and currently work in University of Richmond's 
+            dining services.I'm deeply passionate about baking, having crafted hundreds of delicious loaves of 
+            bread and written an array of original recipes. Recently, I've discovered an intriguing intersection 
+            between mathematics and bread baking. I'm excited to soon share what I've learned, alongside my best recipes.
         </p>
     </div>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="https://www.linkedin.com/in/jade-m-323698253/">LinkedIn</a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </div>
+    </footer>
     
     <script src="script.js" defer></script>
 </body>
