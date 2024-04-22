@@ -6,21 +6,41 @@
     <title>Basil Pesto Recipe</title>
     <link rel="stylesheet" href="bakingStyles.css">
     <style>
-        .slider-container {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .slider-label {
-            margin-right: 10px;
-        }
+        .slidecontainer {
+            width: 100%;
+            }
 
         .slider {
-            width: 200px;
-            margin-right: 10px;
-        }
+            -webkit-appearance: none;
+            width: 20%;
+            height: 25px;
+            margin-top: 8px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            }
+
+        .slider:hover {
+            opacity: 1;
+            }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #4e625f;
+            cursor: pointer;
+            }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #4e625f;
+            cursor: pointer;
+            }
     </style>
     <script>
         var currentLoaves = 1;
@@ -100,14 +120,13 @@
             </nav>
         </div>
     </header>
-
-    <div class="container">
-        <h2>Sourdough</h2>
+    <div class="container"></div>
+    <div class="first">
+        <h2>Sourdough Calculator</h2>
         <p>
-            Sourdough is a
         </p>
-        <h3>Ingredients:</h3>
-        <div id="Loaves">Loaves: 1</div>
+        <h2>Ingredients:</h2>
+        <div id="Loaves"><p>Number of Loaves: 1</p></div>
         <div id="Size">Size: Large</div>
         <div>
             <button onclick="scaleRecipe(1)">1</button>
@@ -121,9 +140,8 @@
             <button onclick="setSize('Large')">Large</button>
         </div>
         <div class="slider-container">
-            <span class="slider-label">Bread Flour</span>
-            <input type="range" min="0" max="100" value="0" step="10" class="slider" id="flourRatioSlider" oninput="updateFlourRatio(this.value)">
-            <span class="slider-label">Whole Wheat Flour</span>
+            <input type="range" min="0" value="50"  max="100" value="100" step="10" class="slider" id="flourRatioSlider" oninput="updateFlourRatio(this.value)">
+            <span class="slider-label">Whole Wheat Amount</span>
         </div>
         <div>
             <li class="ingredient"></li>
