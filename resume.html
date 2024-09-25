@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display PDF</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        embed {
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+        }
+    </style>
+</head>
+<body>
+    <h1 style="display:none;">Embedded PDF Example</h1> <!-- Hiding the title to save space -->
+
+    <!-- Embedding PDF in the webpage -->
+    <embed src="Résumé_Mawn_Jade.pdf" type="application/pdf">
+
+    <!-- Fallback link if embed is not supported -->
+    <p style="text-align:center;">If the PDF does not display, you can download it <a href="Résumé_Mawn_Jade.pdf">here</a>.</p>
+</body>
+</html>

@@ -57,6 +57,16 @@ header h1 {
     display: inline;
 }
 
+.columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    width: 35%; /* Adjust the width of each column */
+    padding: 10px 0;
+    margin: auto;
+}
 
 .container h2 {
     margin: 0;
@@ -80,9 +90,9 @@ header h1 {
 
 .first p {
     color: #1f2020;
-    padding: 20px 0;
-    margin-left: auto;
-    width: 100%;
+    padding: 10px 0;
+    margin: auto;
+    width: 90%;
 }
 
 .second h1 {
@@ -97,11 +107,18 @@ header h1 {
     padding: 10px 0;
 }
 
+.second h3 {
+    color: #4e625f;
+    margin-left: 30px;
+    padding: 2px 0;
+}
+
 
 .second p {
     color: #1f2020;
-    margin-left: auto;
-    padding: 20px 0;
+    padding: 10px 0;
+    margin: auto;
+    width: 90%;
 }
 
 .third h1 {
@@ -118,8 +135,9 @@ header h1 {
 
 .third p {
     color: #d1e2df;
-    margin-left: auto;
-    padding: 20px 0;
+    padding: 10px 0;
+    margin: auto;
+    width: 90%;
 }
 
 .third li {
