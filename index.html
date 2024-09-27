@@ -5,47 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jade Mawn Home</title>
     <link rel="stylesheet" href="mainStyles.css">
+    <meta name="description" content="Personal homepage of Jade Mawn, a Mathematics and Computer Science student passionate about baking.">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1><a id="glow-link" href="index.html" style="cursor: default; text-decoration: none; color: inherit;">Jade Mawn</a></h1>
-            <div id="glow-circle"></div>
-            <nav>
+            <h1>
+                <a id="glow-link" href="index.html" aria-label="Jade Mawn Homepage">Jade Mawn</a>
+            </h1>
+            <div id="glow-circle" aria-hidden="true"></div>
+            <nav aria-label="Main Navigation">
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropbtn" onmouseleave="toggleDropdown()" onmouseover="toggleDropdown()">Projects</a>
-                        <div class="dropdown-content" id="recipesDropdown">
-                            <a href="">Coming</a>
-                            <a href="">Soon</a> 
+                        <a href="#" class="dropbtn" aria-haspopup="true" aria-expanded="false">Projects</a>
+                        <div class="dropdown-content" id="projectsDropdown" aria-label="Projects Dropdown">
+                            <a href="#">Coming</a>
+                            <a href="#">Soon</a> 
                         </div>
                     </li>
-                    <li><a href="bakingIndex.html" class="active">Baking</a></li>
+                    <li><a href="bakingIndex.html">Baking</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="container">
-        <h2>Introduction</h2>
-        <p>
-            My name is Jade Mawn. I am a junior at the University of Richmond studying Mathematics 
-            and Computer Science. I am a French Minor and recently starting studying Spanish as well.
-            Beyond classes I have been a barista for four years and currently work in University of Richmond's 
-            dining services. I'm deeply passionate about baking, having prepared hundreds of loaves of 
-            bread and written an array of original recipes. Recently, I've discovered an intriguing intersection 
-            between mathematics and bread baking. I'm excited to soon share what I've learned, alongside my best recipes.
-        </p>
-    </div>
+    <main>
+        <div class="container">
+            <h2>Introduction</h2>
+            <p>
+                My name is Jade Mawn. I am a junior at the University of Richmond studying Mathematics 
+                and Computer Science. I am a French Minor and recently started studying Spanish as well.
+                Beyond classes, I have been a barista for four years and currently work in the University of Richmond's 
+                dining services. I'm deeply passionate about baking, having prepared hundreds of loaves of 
+                bread and written an array of original recipes. Recently, I've discovered an intriguing intersection 
+                between mathematics and bread baking. I'm excited to soon share what I've learned, alongside my best recipes.
+            </p>
+        </div>
+    </main>
 
     <footer>
         <div class="container">
             <ul class="footer-links">
-                <li><a href="https://www.linkedin.com/in/jade-m-323698253/">LinkedIn</a></li>
+                <li><a href="https://www.linkedin.com/in/jade-m-323698253/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                 <li><a href="Resume.html">Résumé</a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
+                <!-- Add more links here if needed -->
             </ul>
         </div>
     </footer>
