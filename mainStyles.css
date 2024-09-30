@@ -201,12 +201,10 @@ footer {
 }
 
 .card img {
-    max-height: 800px;
     padding-right: 10px;
     height: auto;
-    min-height: 600px;
+    min-width: 300px;
     right: 20px; /* Distance from the right of the card */
-    object-fit: contain; /* Ensures image keeps its aspect ratio */
     border-radius: 0% 30% 0% 30%;
 }
 
