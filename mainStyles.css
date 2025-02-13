@@ -39,6 +39,10 @@ img {
     height: auto; /* Maintains aspect ratio */
 }
 
+body a {
+    text-decoration: none;
+    color: black;
+}
 
 /* Container */
 .container {
