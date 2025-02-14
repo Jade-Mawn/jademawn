@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        
+        body {
+            background-color: #ff5cb3; 
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            color: #ffe4e1;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 50px;
+            text-shadow: 2px 2px 5px #ff0088;
+        }
+
+        p {
+            font-size: 2rem;
+            margin: 20px auto;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .heart {
+            margin: 20px auto;
+            width: 150px;
+            height: 150px;
+            background-color: #ff8eca;
+            position: relative;
+            display: inline-block;
+            transform: rotate(-45deg);
+            transition: transform 0.3s ease;
+        }
+
+        .heart:hover {
+            transform: rotate(-45deg) scale(1.2);
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: #ff8eca;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -75px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: 75px;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.2);
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Valentine's Day Trey!</h1>
+    <div class="heart"></div>
+    <p>To Trey, my amazing boyfriend: I wish so badly I could be with you today! I know its just another day but I've 
+        never had a special Valentines day and I'm sorry I'm the reason we're not together, I promise you it won't be that way next year. 
+        You are the kindest, sweetest, and most wonderful person I know. I feel so lucky to have you in my life. Sending you all my love and hugs!</p>
+    
+    <p>Here are a few photos that always make me happy even if I've looked at them a million times</p>
+    <div class="image-gallery">
+        
+        <img src="IMG_4218.jpeg" alt="Placeholder Image 2">
+        <img src="IMG_3826.JPG" alt="Placeholder Image 4">
+        <img src="IMG_6106.jpeg" alt="Placeholder Image 1">
+        <img src="IMG_0764.jpeg" alt="Placeholder Image 6">
+
+        <img src="98F271F4-EBAF-4C74-B2FC-89105EB0F091_1_105_c 2.jpeg" alt="Placeholder Image 3">
+        <img src="IMG_6310.jpeg" alt="Placeholder Image 5">
+        <img src="IMG_5579.jpeg" alt="Placeholder Image 6">
+        <img src="100_0380.jpeg" alt="Placeholder Image 6">
+    </div>
+
+    <footer>
+        <p>&hearts; all my love, forever and always &hearts;</p>
+        <p> - Jade </p>
+    </footer>
+</body>
+</html>
+
+
