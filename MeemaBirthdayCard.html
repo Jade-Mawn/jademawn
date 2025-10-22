@@ -12,15 +12,27 @@
             box-sizing: border-box;
         }
 
+        html {
+            overflow: hidden;
+            height: 100%;
+            position: fixed;
+            width: 100%;
+        }
+
         body {
             font-family: 'Merriweather', serif;
             background: linear-gradient(135deg, #a8e6cf, #88d8c0, #7fcdcd, #6bc4d1);
             min-height: 100vh;
+            max-height: 100vh;
             display: flex;
             justify-content: flex-end;
             align-items: center;
             padding-right: 50px;
-            overflow-x: hidden;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
         }
 
         .card-container {
@@ -401,6 +413,20 @@
             if (isMusicPlaying) {
                 playNextSong();
             }
+        });
+
+        // Prevent scrolling on mobile
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        // Prevent zoom and other mobile behaviors
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
         });
 
         // Initialize with a random song when page loads
