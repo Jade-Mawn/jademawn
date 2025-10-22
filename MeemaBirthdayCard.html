@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Meema! 🎂</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #a8e6cf, #88d8c0, #7fcdcd, #6bc4d1);
+            min-height: 100vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 50px;
+            overflow-x: hidden;
+        }
+
+        .card-container {
+            position: relative;
+            width: 400px;
+            height: 500px;
+            cursor: pointer;
+            transform-origin: left center;
+            transition: transform 0.8s ease-in-out;
+            transform-style: preserve-3d;
+            z-index: 2;
+        }
+
+        .card-container.opened {
+            transform: rotateY(-180deg);
+        }
+
+        .card-cover {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 1px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            backface-visibility: hidden;
+        }
+
+        .card-inside {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 1px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+        }
+
+        .inside-image {
+            max-width: 80%;
+            max-height: 60%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .inside-page {
+            position: fixed;
+            top: 50%;
+            right: 50px;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 500px;
+            background: white;
+            border-radius: 1px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            z-index: 1;
+        }
+
+        .greeting-title {
+            color: #e17055;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .greeting-message {
+            color: #2d3436;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+
+        .music-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .music-button {
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .music-button:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,1);
+        }
+
+        .card-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(116,185,255,0.2)"/><circle cx="80" cy="30" r="1.5" fill="rgba(116,185,255,0.2)"/><circle cx="40" cy="60" r="1" fill="rgba(116,185,255,0.2)"/><circle cx="70" cy="70" r="2.5" fill="rgba(116,185,255,0.2)"/><circle cx="10" cy="80" r="1.8" fill="rgba(116,185,255,0.2)"/></svg>');
+            opacity: 0.6;
+            border-radius: 1px;
+        }
+
+        .card-title {
+            font-size: 2.5rem;
+            color: #2d3436;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .card-subtitle {
+            font-size: 1.2rem;
+            color: #636e72;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .open-instruction {
+            font-size: 1rem;
+            color: #74b9ff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+            z-index: 1;
+            position: relative;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="music-controls">
+        <button class="music-button" id="musicButton" onclick="toggleMusic()">🎵</button>
+    </div>
+
+    <div class="card-container" id="cardContainer" onclick="toggleCard()">
+        <div class="card-cover">
+            <h1 class="card-title">🎂 Happy Birthday! 🎂</h1>
+            <p class="card-subtitle">Dear Meema</p>
+            <p class="open-instruction">Click to open your card! 💕</p>
+        </div>
+        
+        <div class="card-inside">
+            <img src="IMG_6310.jpeg" alt="Beautiful memory with Meema" class="inside-image">
+        </div>
+    </div>
+
+    <div class="inside-page" id="insidePage">
+        <h2 class="greeting-title">🎉 Happy Birthday, Meema! 🎉</h2>
+        <p class="greeting-message">
+            Wishing you the most wonderful birthday filled with love, laughter, and all the happiness your heart can hold. You mean the world to us and we're so grateful to have you in our lives!
+        </p>
+    </div>
+
+    <audio id="birthdayMusic" preload="auto">
+        <!-- Multiple music files will be loaded here -->
+    </audio>
+
+    <script>
+        let isCardOpen = false;
+        let isMusicPlaying = false;
+        let currentMusicIndex = 0;
+
+        // List of music files in your music folder
+        const musicFiles = [
+            'music/birthday1.mp3',
+            'music/birthday2.mp3', 
+            'music/happy_birthday.mp3',
+            'music/celebration.mp3',
+            'music/party_music.mp3'
+        ];
+
+        function toggleCard() {
+            const cardContainer = document.getElementById('cardContainer');
+            const musicButton = document.getElementById('musicButton');
+            
+            if (!isCardOpen) {
+                // Opening the card
+                cardContainer.classList.add('opened');
+                isCardOpen = true;
+                
+                // Play music when card opens
+                if (!isMusicPlaying) {
+                    playRandomMusic();
+                    isMusicPlaying = true;
+                    musicButton.textContent = '🔊';
+                }
+            } else {
+                // Closing the card
+                cardContainer.classList.remove('opened');
+                isCardOpen = false;
+            }
+        }
+
+
+        function playRandomMusic() {
+            const audio = document.getElementById('birthdayMusic');
+            const randomIndex = Math.floor(Math.random() * musicFiles.length);
+            currentMusicIndex = randomIndex;
+            
+            audio.src = musicFiles[currentMusicIndex];
+            audio.loop = true;
+            audio.volume = 0.7;
+            
+            // Try to play the music
+            audio.play().then(() => {
+                console.log('Music started playing');
+            }).catch((error) => {
+                console.log('Autoplay prevented, user interaction required:', error);
+                // Music will start when user clicks the music button
+            });
+        }
+
+        function toggleMusic() {
+            const audio = document.getElementById('birthdayMusic');
+            const musicButton = document.getElementById('musicButton');
+            
+            if (isMusicPlaying) {
+                // Stop music
+                audio.pause();
+                isMusicPlaying = false;
+                musicButton.textContent = '🎵';
+            } else {
+                // Start music
+                if (audio.src === '' || audio.src === window.location.href) {
+                    playRandomMusic();
+                } else {
+                    audio.play();
+                }
+                isMusicPlaying = true;
+                musicButton.textContent = '🔊';
+            }
+        }
+
+        // Handle music end and play next song
+        document.getElementById('birthdayMusic').addEventListener('ended', function() {
+            if (isMusicPlaying) {
+                currentMusicIndex = (currentMusicIndex + 1) % musicFiles.length;
+                playRandomMusic();
+            }
+        });
+
+        // Initialize with a random song when page loads
+        window.addEventListener('load', function() {
+            // Preload the first song
+            const audio = document.getElementById('birthdayMusic');
+            audio.src = musicFiles[0];
+        });
+    </script>
+</body>
+</html>
