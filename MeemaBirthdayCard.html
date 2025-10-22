@@ -146,6 +146,36 @@
             background: rgba(255,255,255,1);
         }
 
+        /* Rotate Phone Popup */
+        .rotate-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .rotate-popup.show {
+            opacity: 1;
+        }
+
+        /* Keep popup unrotated on mobile */
+        @media (max-width: 768px) and (orientation: portrait) {
+            .rotate-popup {
+                transform: translate(-50%, -50%) rotate(-90deg);
+            }
+        }
+
         .card-cover::before {
             content: '';
             position: absolute;
@@ -188,6 +218,13 @@
         @keyframes pulse {
             0%, 100% { opacity: 0.7; }
             50% { opacity: 1; }
+        }
+
+        /* Force background for all mobile */
+        @media (max-width: 768px) {
+            body {
+                background: #b8d4f0 !important;
+            }
         }
 
         /* Mobile Landscape Mode */
@@ -247,7 +284,7 @@
 
         @media (max-width: 768px) and (orientation: landscape) {
             body {
-                background: linear-gradient(135deg, #a8e6cf, #88d8c0, #7fcdcd, #6bc4d1);
+                background: #b8d4f0 !important;
                 padding-right: 20px;
                 padding-left: 20px;
             }
@@ -289,7 +326,7 @@
 
         @media (max-width: 480px) and (orientation: landscape) {
             body {
-                background: linear-gradient(135deg, #a8e6cf, #88d8c0, #7fcdcd, #6bc4d1);
+                background: linear-gradient(135deg, #a8e6cf, #88d8c0, #7fcdcd, #6bc4d1) !important;
                 padding-right: 10px;
                 padding-left: 10px;
             }
@@ -324,6 +361,10 @@
 <body>
     <div class="music-controls">
         <button class="music-button" id="musicButton" onclick="toggleMusic()">🎵</button>
+    </div>
+
+    <div class="rotate-popup" id="rotatePopup">
+        Rotate your phone to landscape mode for the best experience!
     </div>
 
     <div class="card-container" id="cardContainer" onclick="toggleCard()">
@@ -461,6 +502,17 @@
             // Preload the first song
             const audio = document.getElementById('birthdayMusic');
             audio.src = musicFiles[0];
+            
+            // Show rotate popup on mobile devices
+            if (window.innerWidth <= 768) {
+                const popup = document.getElementById('rotatePopup');
+                popup.classList.add('show');
+                
+                // Hide popup after 5 seconds
+                setTimeout(function() {
+                    popup.classList.remove('show');
+                }, 5000);
+            }
         });
     </script>
 </body>
